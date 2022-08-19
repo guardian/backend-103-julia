@@ -61,7 +61,7 @@ jobs:
                     Recipe: backend-101
                     AmigoStage: PROD
                   templatePath: Backend103Julia-CODE.template.json
-               backend-103-julia:
+              backend-103-julia:
                 type: autoscaling
                 sources:
                   - target/scala-2.13/hello-world.jar
