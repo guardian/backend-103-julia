@@ -23,26 +23,28 @@ jobs:
           java-version: "11"
           distribution: "corretto"
       - uses: actions/setup-node@v3
-          with:
-            node-version: 14
+        with:
+          node-version: 14
       - name: test and check formatting
         run: |
           sbt -v test scalafmtCheckAll
       - name: build uberjar
         run: |
           sbt -v assembly
-        - working-directory: ./cdk
-          run: |
-            npm ci
-            npm run lint
-            npm test
-            npm run synth
+
+      - working-directory: ./cdk
+        run: |
+          npm ci
+          npm run lint
+          npm test
+          npm run synth
+
       - uses: guardian/actions-riff-raff@v1
         with:
           app: backend-103-julia
           config: |
             stacks:
-              - playground
+              - deploy
             regions:
               - eu-west-1
             allowedStages:
@@ -52,14 +54,14 @@ jobs:
                 type: cloud-formation
                 app: backend-103-julia
                 sources:
-                  - Backend103Julia-CODE.template.json
+                  - cdk/cdk.out/Backend103Julia-CODE.template.json
                 parameters:
                   amiParameter: AMIBackend103julia
                   amiTags:
                     Recipe: backend-101
                     AmigoStage: PROD
                   templatePath: Backend103Julia-CODE.template.json
-               TODO:
+              backend-103-julia:
                 type: autoscaling
                 sources:
                   - target/scala-2.13/hello-world.jar
