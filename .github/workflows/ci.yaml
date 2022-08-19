@@ -37,12 +37,13 @@ jobs:
             npm run lint
             npm test
             npm run synth
+
       - uses: guardian/actions-riff-raff@v1
         with:
           app: backend-103-julia
           config: |
             stacks:
-              - playground
+              - deploy
             regions:
               - eu-west-1
             allowedStages:
