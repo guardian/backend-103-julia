@@ -67,6 +67,6 @@ jobs:
                   - target/scala-2.13/hello-world.jar
                   - app.service
                 parameters:
-                  bucket: e.g. deploy-tools-dist
+                  bucket: deploy-tools-dist
                 dependencies:
                   - cloudformation
