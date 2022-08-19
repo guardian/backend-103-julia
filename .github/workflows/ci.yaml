@@ -31,15 +31,15 @@ jobs:
       - name: build uberjar
         run: |
           sbt -v assembly
-            - working-directory: ./cdk
-              run: |
-                npm ci
-                npm run lint
-                npm test
-                npm run synth
+        - working-directory: ./cdk
+          run: |
+            npm ci
+            npm run lint
+            npm test
+            npm run synth
       - uses: guardian/actions-riff-raff@v1
         with:
-          app: TODO e.g. backend-103-julia
+          app: backend-103-julia
           config: |
             stacks:
               - playground
@@ -50,9 +50,9 @@ jobs:
             deployments:
               cloudformation:
                 type: cloud-formation
-                app: TODO e.g. backend-103-julia
+                app: backend-103-julia
                 sources:
-                  - TODO e.g. Backend103Julia-CODE.template.json
+                  - Backend103Julia-CODE.template.json
                 parameters:
                   amiParameter: AMIBackend103julia
                   amiTags:
