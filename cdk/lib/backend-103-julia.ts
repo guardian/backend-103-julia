@@ -13,7 +13,7 @@ export class Backend103Julia extends GuStack {
 
 		const name = 'backend-103-julia';
 		const domainName = `${name}.gutools.co.uk`;
-		const bucket = 'deploy.tools.dist';
+		const bucket = 'deploy-tools-dist';
 
 		const keyPrefix = `${this.stack}/${this.stage}/${name}`;
 
