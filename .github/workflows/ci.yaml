@@ -54,7 +54,7 @@ jobs:
                 type: cloud-formation
                 app: backend-103-julia
                 sources:
-                  - Backend103Julia-CODE.template.json
+                  - cdk/cdk.out/Backend103Julia-CODE.template.json
                 parameters:
                   amiParameter: AMIBackend103julia
                   amiTags:
