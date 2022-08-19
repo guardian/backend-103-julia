@@ -23,20 +23,21 @@ jobs:
           java-version: "11"
           distribution: "corretto"
       - uses: actions/setup-node@v3
-          with:
-            node-version: 14
+        with:
+          node-version: 14
       - name: test and check formatting
         run: |
           sbt -v test scalafmtCheckAll
       - name: build uberjar
         run: |
           sbt -v assembly
-        - working-directory: ./cdk
-          run: |
-            npm ci
-            npm run lint
-            npm test
-            npm run synth
+
+      - working-directory: ./cdk
+        run: |
+          npm ci
+          npm run lint
+          npm test
+          npm run synth
 
       - uses: guardian/actions-riff-raff@v1
         with:
