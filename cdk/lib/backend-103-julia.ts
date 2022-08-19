@@ -18,7 +18,7 @@ export class Backend103Julia extends GuStack {
 		const keyPrefix = `${this.stack}/${this.stage}/${name}`;
 
 		const userData = `#!/bin/bash -ev
-		aws s3 cp s3://${bucket}/${keyPrefix}/app.service /etc/systemed/system/${name}.service
+		aws s3 cp s3://${bucket}/${keyPrefix}/app.service /etc/systemd/system/${name}.service
 		aws s3 cp s3://${bucket}/${keyPrefix}/hello-world.jar /hello-world.jar
 		systemctl start ${name}`;
 
